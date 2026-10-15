@@ -1,5 +1,7 @@
 # local-wp-mcp
 
+> **Fork notice:** This fork of [teamchrisfromthelc/local-wp-mcp](https://github.com/teamchrisfromthelc/local-wp-mcp) contains a modification that allows the MCP server to be used on **Windows** as well (in addition to macOS and Linux). Changes: Local data under `%APPDATA%\Local`, detection of the `win64`/`win32` binary folders and `.exe` files, MySQL connection via `127.0.0.1:<port>` instead of a Unix socket, Windows `wp-cli.phar` locations, and PHP startup warnings kept off stdout. Because it is not published to npm, run it from a local clone (see Option B), e.g. `node C:\path	o\local-wp-mcp\dist\index.js`.
+
 MCP server providing WP-CLI, MySQL, and filesystem access for [Local by Flywheel](https://localwp.com/) WordPress sites.
 
 Unlike REST API-based WordPress MCP servers, this connects directly through Local's native filesystem and process architecture — no application passwords, HTTP endpoints, or network requests needed.
@@ -7,7 +9,7 @@ Unlike REST API-based WordPress MCP servers, this connects directly through Loca
 ## Features
 
 - **WP-CLI execution** via Local's bundled PHP binary with command allowlisting
-- **Direct MySQL queries** via Unix socket connection pooling
+- **Direct MySQL queries** via connection pooling (Unix socket on macOS/Linux, `127.0.0.1:<port>` on Windows)
 - **Filesystem operations** with path validation and WordPress core protection
 - **Multi-site support** with automatic site detection from `sites.json`
 - **Security-first**: `spawn()` only (no `exec()`), symlink-safe path validation, tiered command permissions
